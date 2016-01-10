@@ -1,0 +1,45 @@
+{% extends "blog/includes/base.html" %}
+
+
+{% block content %}
+    {% if object_list %}
+        {% for post in object_list %}
+
+
+            <article>
+                <div class="post-image">
+                    <div class="post-heading">
+                        <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                    </div>
+                </div>
+                <p>
+                    {{ post.content|truncatechars:500 }}
+                </p>
+                <div class="bottom-article">
+                    <ul class="meta-post">
+                        <li><i class="icon-calendar"></i>{{ post.pub_date }}</li>
+                    </ul>
+                    <a class="pull-right" href="{{ post.get_absolute_url }}">Continue reading <i class="icon-angle-right"></i></a>
+                </div>
+            </article>
+
+        {% endfor %}
+    {% else %}
+        <p>No posts found</p>
+    {% endif %}
+
+    <ul class="pager">
+        {% if page_obj.has_previous %}
+            <li class="previous"><a href="/{{ page_obj.previous_page_number }}/">Previous Page</a></li>
+        {% endif %}
+        {% if page_obj.has_next %}
+            <li class="next"><a href="/{{ page_obj.next_page_number }}/">Next Page</a></li>
+        {% endif %}
+    </ul>
+
+
+
+{% endblock %}
+
+
+

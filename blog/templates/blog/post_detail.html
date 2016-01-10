@@ -1,0 +1,20 @@
+{% extends "blog/includes/base.html" %}
+
+{% block content %}
+
+
+    <article>
+        <div class="post-image">
+            <div class="post-heading">
+                <h3>{{ object.title }}</h3>
+                <h5>{{ object.pub_date }}</h5>
+            </div>
+        </div>
+        <p>
+            {{ object.content }}
+        </p>
+    </article>
+
+
+
+{% endblock %}
